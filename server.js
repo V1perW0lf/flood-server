@@ -3,7 +3,7 @@ var fetch = require("node-fetch");
 
 var hostname = "localhost";
 var port = process.env.PORT || 4243;
-var PI_URL = "http://70.130.71.39:6942";
+var PI_URL = process.env.PI_IP;
 
 var server = http.createServer((request, response) => {
   response.setHeader("Access-Control-Allow-Origin", "*");
@@ -74,63 +74,3 @@ async function getEverything() {
     return null;
   }
 }
-
-// async function getStored() {
-//   let addresses;
-//   try {
-//     const response = await fetch(
-//       "http://71.132.173.1:6000" + "/store/formatted"
-//     );
-//     addresses = await response.text();
-//     addresses = JSON.parse(addresses);
-//     return addresses;
-//   } catch (error) {
-//     console.error("Error:", error);
-//     return null;
-//   }
-// }
-
-// async function getNewData() {
-//   let addresses;
-//   try {
-//     const response = await fetch(
-//       "http://71.132.173.1:6000" + "/store/formatted"
-//     );
-//     addresses = await response.text();
-//     addresses = JSON.parse(addresses);
-//     return addresses;
-//   } catch (error) {
-//     console.error("Error:", error);
-//     return null;
-//   }
-// }
-
-// sendFormatted = newObj => {
-//   var postData = JSON.stringify(newObj);
-
-//   var options = {
-//     hostname: "71.132.173.1", //71.132.173.1
-//     port: 6000,
-//     path: "/store/formatted",
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       "Content-Length": postData.length
-//     }
-//   };
-
-//   var req = http.request(options, function(res) {
-//     res.setEncoding("utf8");
-//     res.on("data", function(chunk) {
-//       console.log("BODY: " + chunk);
-//     });
-//   });
-
-//   req.on("error", function(e) {
-//     console.log("problem with request: " + e.message);
-//   });
-
-//   // write data to request body
-//   req.write(postData);
-//   req.end();
-// };
